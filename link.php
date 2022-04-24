@@ -79,16 +79,61 @@ include ('includes/login_header.php');
             $from = "info@kykadesigns.com";
             $to =   $receiver_email;
             $subject = $msg;
-            $message = " 
-            <html>
+            $message = "<!DOCTYPE html>
+            <html lang='en'>
             <head>
-            <title>{$from}</title>
+                <meta charset='UTF-8'>
+                <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+                <title>kykadesigns</title>
             </head>
             <body>
-            <img src='http://KYKADESIGNS.com/logo.jpg'
-            {$msg}
-            KYKADESIGNS <br>
-            3481 Normandy Rd, Normandy, State Tennessee, 37360 country USA
+                <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+                <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+            
+                 <style>
+                     .social-icons a {
+                font-size: 16px;
+                color: #203656;
+            }
+            
+            .social-icons a:hover {
+                color: #ad1deb;
+            }
+            
+            .social-icons li:not(:last-child) {
+                margin-right: 1rem;
+            }
+            
+                 </style>
+                 <div class='container'>
+                     <center>
+                     <div class='col-lg-12 col-xl-12 col-md-6 col-sm-6' style='margin-top:100px;'>
+                     <h4 style='margin-top:0; padding-top:0;'><img src='logo.jpg' alt=' class='img-fulid' height='50px' width='50px'> info@kykadesigns.com</h4>
+                     <strong style='padding-bottom:-100px; color:black;'>kykadesigns</strong>
+                     <h4>{$msg}</h4>
+                     <div class='contact__social pl-30'>
+                        <ul class='social-icons list-unstyled list-inline mb-0 mt-5 mt-auto w-100' style='padding-top: 20px;'>
+                            <li class='list-inline-item'>
+                                <a href='#'><i class='fa fa-facebook-f'></i></a>
+                            </li>
+                            <li class='list-inline-item'>
+                                <a href='#'><i class='fa fa-whatsapp'></i></a>
+                            </li>
+                            <li class='list-inline-item'>
+                                <a href='#'><i class='fa fa-instagram'></i></a>
+                            </li>
+                            <!-- <li class='list-inline-item'>
+                                <a href='#'><i class='fab fa-twitter'></i></a>
+                            </li> -->
+                        </ul>
+                                       </div> <br>
+                                       <h4>Follow Us</h4>
+                                       <h6>help@kykadesigns.com</h6>
+                                       <small><strong class='text-dark'>3481 Normandy Rd, Normandy, State Tennessee, 37360 country USA</strong></small>
+                    </div>
+                     </center>
+                 </div>
             </body>
             </html>"
             ;

@@ -1,5 +1,7 @@
 <?php include ('config/config.php'); ?>
-<?php include ('includes/login_header.php'); ?>
+<?php include ('includes/login_header.php');
+
+?>
       <!-- header area end -->
 
       <!-- cart mini area start -->
@@ -83,7 +85,7 @@
     if(empty($name)){
         $error['username'] = "Username is required";
     }elseif(!preg_match("/^[a-zA-Z]*$/",$name)){
-        $error['username'] = "Only alphabets are allowed";
+        $error['username'] = "Only alphabets are allowed with no spacing";
     }  // check if name contains only letters 
     if(empty($email)){
         $error['email'] = "email is required";
@@ -107,17 +109,16 @@
         $error['email'] = "Email already exists";
     }
     if(count($error) === 0){
+       $name  = trim($name);
        $token = md5(rand(1,50));
        $password = md5($password);
         $sql =  "INSERT INTO users (username,email,password,token) VALUES ('$name','$email','$password','$token')";
         $connection->query($sql);
         if($sql){
            echo "<script>alert('Registration Sucessful')</script>";
-           echo "<script>window.open('login.php','_self')</script>";
-        unset($name); 
-        unset($password);
-        unset($email);
-       
+           echo "<script>window.open('login.php','_self')</script>";   
+    }else{
+      echo "<script>alert('User not registered')</script>";
     }
    
 } 
