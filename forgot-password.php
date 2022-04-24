@@ -3,9 +3,7 @@
 include ('includes/login_header.php');
 
  ?>
-<?php //include //('config/config.php'); 
 
-?>
 
       <!-- header area end -->
 
@@ -85,19 +83,15 @@ include ('includes/login_header.php');
                   if(isset($_POST['forgot-pwd'])){
                     $email = $_POST['email'];
                     if(empty($email)){
-                        $error['email'] = "Email is required";
-                    }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                        $error['email'] = "Invalid email format";
+                   $error['email'] = "Email is required";
+                     }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $error['email'] = "Invalid email format";
                     }
-                    if(count($error) === 0){
-                        $query = mysqli_query($connection, "SELECT email FROM users WHERE email='$email'");
-                        $db = mysqli_fetch_array($query);
-                        $db_email = $db['email'];
-                        $db_name = $db['username'];
-                        $token = $db['token'];
-                        if(mysqli_num_rows($query) === 0){
-                            echo "<script>alert('We could't find your email')</script>";
-                        }else{
+                    if(empty($error)){
+                     $emailquery = mysqli_query($connection, "SELECT * FROM users WHERE email='$email' LIMIT 1");
+                     if(mysqli_num_rows($emailquery) < 1){
+                        echo "<script>alert('This mail is not registered');</script>";
+                     }else{
                             $to = $db_email;
                             $subject = "Password reset";
                             $message = "
@@ -137,7 +131,7 @@ include ('includes/login_header.php');
                               </div>
                               
                                <br>
-                              <button class="e-btn w-100" name="forgot-pwd">Send Email</button>
+                              <button class="e-btn w-100" type="submit" name="forgot-pwd">Send Email</button>
                            </form>
                         </div>
                      </div>

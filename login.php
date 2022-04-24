@@ -84,7 +84,7 @@ include ('includes/login_header.php');
       <?php 
  
   $error = [];
-//  error_reporting(0);
+  error_reporting(0);
 if(isset($_POST['login-btn'])){
      $password = $_POST['password'];
      $email = $_POST['email'];
@@ -106,7 +106,8 @@ if(isset($_POST['login-btn'])){
             $_SESSION['email'] = $db_email;
             echo "<script>window.open('dashboard', '_SELF')</script>";
          }else{
-            echo "<div class='alert alert-danger'><h5 class='text-danger'><i class='fad fa-info-circle'></i>&nbsp; Your Account is permanently blocked</h5></div>";
+            echo "<script>alert('Account permanently blocked')</script>";
+            echo "<script>window.open('index', '_SELF')</script>";
         }
      }
         

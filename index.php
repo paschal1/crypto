@@ -75,9 +75,9 @@
                         <div class="banner__content">
                            <p class="fw-bold">WHO WE ARE</p>
                            <h2>
-                           KYKADESIGN is a Website Design Company In NIGERIA
+                           KYKADESIGN is a Website Design Company In USA
                            </h2>
-                           <p>Expand your brand and transform your business with our digital solutions, We are the best web design agency in Rivers-state, NIGERIA providing custom web design, mobile app development and branding services</p>
+                           <p>Expand your brand and transform your business with our digital solutions, We are the best web design agency in USA, providing custom web design, mobile app development and branding services</p>
                         </div>
                      </div>
                   </div>
@@ -326,7 +326,7 @@
                   </div>
                   <div class="col-xxl-5 col-xl-5 col-lg-6 col-md-8">
                      <div class="why__thumb">
-                        <img src="assets/img/why/responsive-phone.png" alt="">
+                        <img src="assets/img/why/responsive-phone.png" alt="" class="img-fluid">
                        
                      </div>
                   </div>
