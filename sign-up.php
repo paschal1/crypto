@@ -22,7 +22,7 @@
             <div class="sidebar__content">
                <div class="logo mb-40">
                   <a href="index.php">
-                  <!-- <img src="assets/img/logo/logo.png" alt="logo"> -->
+                  <!-- <img src="assets/img/logo/logo.jpg" alt="logo"> -->
                   </a>
                </div>
                <div class="mobile-menu fix"></div>
