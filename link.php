@@ -27,7 +27,7 @@ include ('includes/login_header.php');
             <div class="sidebar__content">
                <div class="logo mb-40">
                   <a href="index.html">
-                   <img src="assets/img/logo/logo.png" alt="logo">
+                  <!-- <img src="assets/img/logo/logo.png" alt="logo"> -->
                   </a>
                </div>
                <div class="mobile-menu fix"></div>
@@ -93,7 +93,6 @@ include ('includes/login_header.php');
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
 
 <body>
-
             <style>
             .fa{
               padding: 20px;
@@ -108,34 +107,17 @@ include ('includes/login_header.php');
          </style>
           <center>
             <div style='width:100%; background-color:#f5f9fa; padding:200px 0 200px 0;'>
-      
              <div style='width: 500px; height: auto; margin: auto; border-radius: 5px; background-color:white; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 1);'>
-      
               <div style='text-align: center;font-family: open sans semibold; margin:auto; '>
-           
                   <div style='background-color: dodgerblue;padding: 5px;'><br/><br/>
-      
-                <img style='width: 200px; float:center' src='https://kykadesigns.com/img/logo.jpg' style='border-radius: 50%;'  height='50' width='50'>
-                     <p style='text-align:center; color:white;font-family: open sans semibold;'><b>Kykadesigns</b></p>
                   </div>
                   <br>
                   <h4 style='max-width: 400px; margin: auto;padding-top:20px;font-weight: bold;color: black;'><b>{$subject}</b></h4> 
                   <p style='max-width: 400px; margin: auto;padding-top:20px'>$msg</p> <br><br>
-      
-                 
-      
-                  <h5 style='font-family: open sans'>3481 Normandy Rd, Normandy, State Tennessee, 37360 country USA</h5>
-                  <p style='font-family: open sans semibold; font-size: 15px; max-width: 350px; margin: auto; padding-bottom:10px;'>Thank you</p>
-                <ul class='list-unstyled list-inline'>
-                      <li class='list-inline-item'><a href='#' class='fa fa-facebook ' style='text-decoration:none;color: black;text-decoration:none'></a></li>
-                      <li class='list-inline-item'><a href='#' class='fa fa-whatsapp' style='color:black;text-decoration:none;'></a></li>
-                      <li class='list-inline-item'><a href='#' class='fa fa-twitter' style='color:black;text-decoration:none;'></a></li>
-                      <li class='list-inline-item'><a href='#' class='fa fa-instagram' style='color:black;text-decoration:none;'></a></li>
-                </ul>
-               
-      
+                  <p><b>KYKADESIGNS PLC</b></p>
+                  <small>help@kykadesign.com</small>
+                  <h5 style='font-family: open sans'>3481 Normandy Rd, Normandy,Tennessee, 37360 USA</h5>
               </div>
-      
              </div>
             </div>
             </center>
@@ -166,6 +148,7 @@ include ('includes/login_header.php');
                                  </div>
                                  <small class='text-danger small'><?php if(isset($_POST['mail'])){echo $error['email'];} ?></small>
                               </div>
+                             
                               <div class="sign__input-wrapper mb-25">
                                  <h5>Subject</h5>
                                  <div class="sign__input">

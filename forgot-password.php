@@ -89,6 +89,10 @@ include ('includes/login_header.php');
                     }
                     if(empty($error)){
                      $emailquery = mysqli_query($connection, "SELECT * FROM users WHERE email='$email' LIMIT 1");
+                     $row = mysqli_fetch_array($emailquery);
+                     $db_email = $row['email'];
+                     $token = $row['token'];
+                     $base_url = "https://www.kykadesigns.com/";
                      if(mysqli_num_rows($emailquery) < 1){
                         echo "<script>alert('This mail is not registered');</script>";
                      }else{
