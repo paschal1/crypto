@@ -64,76 +64,81 @@ include ('includes/login_header.php');
     
                            <form action="" method="POST">
       <?php 
-      error_reporting(0);
+       error_reporting(0);
       $error = [];
     if(isset($_POST['mail'])){
         $receiver_email = $_POST['email'];
         $msg = $_POST['msg'];
+       $subject = $_POST['subject'];
         if(empty($receiver_email)){
             $error['email'] = "Email cannot be empty";
         }elseif(!filter_var($receiver_email, FILTER_VALIDATE_EMAIL)){
-            $error['email'] = "Invalid email format";
+         $error['email'] = "Invalid email format";
+      }if(empty($subject)){
+         $error['subject'] = "Subject cannot be empty";
         }if(empty($msg)){
-            $error['msg'] = "Invalid email format";
+            $error['msg'] = "Message cannot be empty";
         }if(empty($error)){
             $from = "info@kykadesigns.com";
             $to =   $receiver_email;
-            $subject = $msg;
-            $message = "<!DOCTYPE html>
-            <html lang='en'>
-            <head>
-                <meta charset='UTF-8'>
-                <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                <title>kykadesigns</title>
-            </head>
-            <body>
-                <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
-                <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-            
-                 <style>
-                     .social-icons a {
-                font-size: 16px;
-                color: #203656;
+            $subject = $subject;
+            $message = " 
+   <!DOCTYPE html>
+<html>
+<head>
+ <meta charset='utf-8'>
+ <title></title>
+</head>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+
+<body>
+
+            <style>
+            .fa{
+              padding: 20px;
+        font-size: 30px;
+        width: 30px;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 50%;
             }
-            
-            .social-icons a:hover {
-                color: #ad1deb;
-            }
-            
-            .social-icons li:not(:last-child) {
-                margin-right: 1rem;
-            }
-            
-                 </style>
-                 <div class='container'>
-                     <center>
-                     <div class='col-lg-12 col-xl-12 col-md-6 col-sm-6' style='margin-top:100px;'>
-                     <h4 style='margin-top:0; padding-top:0;'><img src='logo.jpg' alt=' class='img-fulid' height='50px' width='50px'> info@kykadesigns.com</h4>
-                     <strong style='padding-bottom:-100px; color:black;'>kykadesigns</strong>
-                     <h4>{$msg}</h4>
-                     <div class='contact__social pl-30'>
-                        <ul class='social-icons list-unstyled list-inline mb-0 mt-5 mt-auto w-100' style='padding-top: 20px;'>
-                            <li class='list-inline-item'>
-                                <a href='#'><i class='fa fa-facebook-f'></i></a>
-                            </li>
-                            <li class='list-inline-item'>
-                                <a href='#'><i class='fa fa-whatsapp'></i></a>
-                            </li>
-                            <li class='list-inline-item'>
-                                <a href='#'><i class='fa fa-instagram'></i></a>
-                            </li>
-                            <!-- <li class='list-inline-item'>
-                                <a href='#'><i class='fab fa-twitter'></i></a>
-                            </li> -->
-                        </ul>
-                                       </div> <br>
-                                       <h4>Follow Us</h4>
-                                       <h6>help@kykadesigns.com</h6>
-                                       <small><strong class='text-dark'>3481 Normandy Rd, Normandy, State Tennessee, 37360 country USA</strong></small>
-                    </div>
-                     </center>
-                 </div>
+           
+      }
+         </style>
+          <center>
+            <div style='width:100%; background-color:#f5f9fa; padding:200px 0 200px 0;'>
+      
+             <div style='width: 500px; height: auto; margin: auto; border-radius: 5px; background-color:white; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 1);'>
+      
+              <div style='text-align: center;font-family: open sans semibold; margin:auto; '>
+           
+                  <div style='background-color: dodgerblue;padding: 5px;'><br/><br/>
+      
+                <img style='width: 200px; float:center' src='https://kykadesigns.com/img/logo.jpg' style='border-radius: 50%;'  height='50' width='50'>
+                     <p style='text-align:center; color:white;font-family: open sans semibold;'><b>Kykadesigns</b></p>
+                  </div>
+                  <br>
+                  <h4 style='max-width: 400px; margin: auto;padding-top:20px;font-weight: bold;color: black;'><b>{$subject}</b></h4> 
+                  <p style='max-width: 400px; margin: auto;padding-top:20px'>$msg</p> <br><br>
+      
+                 
+      
+                  <h5 style='font-family: open sans'>3481 Normandy Rd, Normandy, State Tennessee, 37360 country USA</h5>
+                  <p style='font-family: open sans semibold; font-size: 15px; max-width: 350px; margin: auto; padding-bottom:10px;'>Thank you</p>
+                <ul class='list-unstyled list-inline'>
+                      <li class='list-inline-item'><a href='#' class='fa fa-facebook ' style='text-decoration:none;color: black;text-decoration:none'></a></li>
+                      <li class='list-inline-item'><a href='#' class='fa fa-whatsapp' style='color:black;text-decoration:none;'></a></li>
+                      <li class='list-inline-item'><a href='#' class='fa fa-twitter' style='color:black;text-decoration:none;'></a></li>
+                      <li class='list-inline-item'><a href='#' class='fa fa-instagram' style='color:black;text-decoration:none;'></a></li>
+                </ul>
+               
+      
+              </div>
+      
+             </div>
+            </div>
+            </center>
             </body>
             </html>"
             ;
@@ -151,23 +156,31 @@ include ('includes/login_header.php');
 
         }
     }
-  
+   
  ?>                        
                               <div class="sign__input-wrapper mb-25">
                                  <h5>Recepient's Email</h5>
                                  <div class="sign__input">
-                                    <input type="text" placeholder="e-mail address" autocomplete="off" name="email" value="<?php if(isset($_POST['send-mail'])){echo $email ;} ?>">
+                                    <input type="text" placeholder="e-mail address" autocomplete="off" name="email" value="<?php if(isset($_POST['mail'])){echo $receiver_email ;} ?>">
                                     <i class="fal fa-envelope"></i>
                                  </div>
-                                 <small class='text-danger small'><?php if(isset($_POST['send-mail'])){echo $error['email'];} ?></small>
+                                 <small class='text-danger small'><?php if(isset($_POST['mail'])){echo $error['email'];} ?></small>
+                              </div>
+                              <div class="sign__input-wrapper mb-25">
+                                 <h5>Subject</h5>
+                                 <div class="sign__input">
+                                    <textarea type="text" placeholder="Subject" autocomplete="off" rows="30" cols="30" name="subject" ><?php if(isset($_POST['mail'])){echo $subject ;} ?></textarea>
+                                    <i class="fal fa-envelope"></i>
+                                 </div>
+                                 <small class='text-danger small'><?php if(isset($_POST['mail'])){echo $error['subject'];} ?></small>
                               </div>
                               <div class="sign__input-wrapper mb-25">
                                  <h5>Message</h5>
                                  <div class="sign__input">
-                                    <textarea type="text" placeholder="Message" autocomplete="off" rows="50" cols="30" name="msg" value="<?php if(isset($_POST['Send-mail'])){echo $receiver_email ;} ?>"> </textarea>
+                                    <textarea type="text" placeholder="Message" autocomplete="off" rows="30" cols="30" name="msg"><?php if(isset($_POST['mail'])){echo $msg ;} ?></textarea>
                                     <i class="fal fa-envelope"></i>
                                  </div>
-                                 <small class='text-danger small'><?php if(isset($_POST['send-mail'])){echo $error['msg'];} ?></small>
+                                 <small class='text-danger small'><?php if(isset($_POST['mail'])){echo $error['msg'];} ?></small>
                               </div>
                                <br>
                               <button class="e-btn w-100" type="submit" name="mail">Send mail</button>

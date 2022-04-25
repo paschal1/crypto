@@ -4,9 +4,7 @@ include ('includes/login_header.php');
 $query = mysqli_query($connection, "SELECT * FROM users");
 if(mysqli_num_rows($query)===0){ //if the number of row retured by the query(i.e if there is no record in the database)
    echo "<script>window.open('sign-up', '_SELF')</script>";
-    }else{
-      echo "<script>window.open('index', '_SELF')</script>";
-    } 
+    }
  ?>
 <?php //include //('config/config.php'); 
 
