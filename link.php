@@ -27,7 +27,7 @@ include ('includes/login_header.php');
             <div class="sidebar__content">
                <div class="logo mb-40">
                   <a href="index.html">
-                  <!-- <img src="assets/img/logo/logo.png" alt="logo"> -->
+                   <img src="assets/img/logo/logo.png" alt="logo">
                   </a>
                </div>
                <div class="mobile-menu fix"></div>
