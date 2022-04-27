@@ -8,6 +8,8 @@ include ('config/config.php');
   echo "<script>window.open('sign-up','_self')</script>";   
  }
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" integrity="sha512-Ez0cGzNzHR1tYAv56860NLspgUGuQw16GiOOp/I2LuTmpSK9xDXlgJz3XN4cnpXWDmkNBKXR/VDMTCnAaEooxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <!-- header area end -->
 
       <!-- cart mini area start -->
@@ -86,7 +88,7 @@ include ('config/config.php');
     $error = [];
     if(isset($_SESSION["locked"])){
       $difference = time() - $_SESSION["locked"];
-      if($difference > 60){
+      if($difference > 60*60){
         unset($_SESSION['locked']);
         unset($_SESSION["login_attempts"]);
       }
@@ -117,25 +119,29 @@ include ('config/config.php');
           $_SESSION['user_id'] = $db_id;
           $_SESSION['email'] = $db_email;
           echo "<script>window.open('dashboard','_self')</script>";   
+        }elseif($email === $db_email && $user_role === $db_role){
+         $_SESSION["msg"] = "Account Permanenty Blocked";
         }else{
           $_SESSION['login_attempts'] +=1;
-        $_SESSION["msg"] = "Wrong Entries";
+         //  $_SESSION["msg"] = "Account Permanenty Blocked";
         }
       }else{
        $_SESSION['login_attempts']  +=1;
-      $_SESSION["msg"] = "Wrong Entries";
+      //   $_SESSION["msg"] = "Account Permanenty Blocked";
       }
     } 
 }
     
 ?>
                               <?php if(isset($_SESSION['msg'])){ ?>
-                                    <div class='alert alert-danger'><?= $_SESSION["msg"]; ?></div>
+                                 <div class='alert alert-danger alert-dismissible fade show' role='alert'>
+                            <svg class='bi flex-shrink-0 me-2' width='24' height='24' role='img' aria-label='Danger:'><use xlink:href='#exclamation-triangle-fill'/></svg> <?= $_SESSION["msg"]; ?>
+                              <button type='button' class='btn-close btn-sm' data-bs-dismiss='alert' aria-label='Close'></button></div>
                               <?php unset($_SESSION["msg"]);} ?>
 
-                              <?php  if($_SESSION["login_attempts"] > 2){  ?>
-                                <div class='alert alert-danger'>Account Permanently Blocked</div>
-                              <?php unset($_SESSION["msg"]) ;} ?>
+                              <?php  //if($_SESSION["login_attempts"] > 2){  ?>
+                                <!-- <div class='alert alert-danger'>Account Permanently Blocked</div> -->
+                              <?php //unset($_SESSION["msg"]) ;} ?>
                               <div class="sign__input-wrapper mb-25">
                                  <h5>Email</h5>
                                  <div class="sign__input">
@@ -159,14 +165,14 @@ include ('config/config.php');
                               <?php
                               if($_SESSION["login_attempts"] > 2){
                                 $_SESSION['locked'] = time();
-                                echo "<div class='text-danger'>Too many wrong entries, check back later</div>";
+                                echo "<div class='text-danger'>Too many wrong entries, check back later.</div>";
                               }else{
                                 
                               ?>
                               <button class="e-btn w-100" name="submit">Login</button>
                               <?php  } ?>
                               <div class="sign__new text-center mt-20">
-                                 <p>Don't have account?<a href="login"> Sign up</a></p>
+                              <a href="forgot-password">Forgot Password?</a>
                               </div>
                            </form>
                         </div>
@@ -178,6 +184,9 @@ include ('config/config.php');
          <!-- sign up area end -->
          
       </main>
+      <script>
+         $('#error').delay(5000).fadeOut(400)
+      </script>
       <script>
 if(window.history.replaceState ) {
   window.history.replaceState( null, null, window.location.href );
