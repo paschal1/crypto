@@ -22,7 +22,7 @@
             <div class="sidebar__content">
                <div class="logo mb-40">
                   <a href="index.php">
-                  <!-- <img src="assets/img/logo/logo.jpg" alt="logo"> -->
+                  <!-- <img src="assets/img/logo/logo.png" alt="logo"> -->
                   </a>
                </div>
                <div class="mobile-menu fix"></div>
@@ -75,7 +75,7 @@
     
                            <form action="" method="POST">
                            <?php
-   error_reporting(0);
+   // error_reporting(0);
     $error = [];
     if(isset($_POST['submit'])){
     $name = mysqli_real_escape_string($connection, $_POST['username']);
@@ -89,9 +89,7 @@
     }  // check if name contains only letters 
     if(empty($email)){
         $error['email'] = "email is required";
-    }elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $error['email'] = "Invalid email format";
-    }  
+    } 
     if(empty($password)){
         $error['password'] = "Password is required";
     }elseif(strlen($password) < 4){
@@ -109,19 +107,25 @@
         $error['email'] = "Email already exists";
     }
     if(count($error) === 0){
+      $query = mysqli_query($connection, "SELECT * FROM users");
+      if(mysqli_num_rows($query)===0){ //if the number of row retured by the query(i.e if there is no record in the database)
+            $role = "Admin";
+          }else{
+             $role = "User";
+          }
        $name  = trim($name);
        $token = md5(rand(1,50));
        $password = md5($password);
-        $sql =  "INSERT INTO users (username,email,password,token) VALUES ('$name','$email','$password','$token')";
+        $sql =  "INSERT INTO users (username,email,password,token,role) VALUES ('$name','$email','$password','$token','$role')";
         $connection->query($sql);
         if($sql){
-           echo "<script>alert('Registration Sucessful')</script>";
-           echo "<script>window.open('login.php','_self')</script>";   
+           echo "<div class='alert alert-success'>Registration Successful</div>";
+           echo "<script>window.open('login','_self')</script>";   
     }else{
       echo "<script>alert('User not registered')</script>";
     }
    
-} 
+}
     }
 ?>
                               <div class="sign__input-wrapper mb-25">
